@@ -2,9 +2,11 @@ import { atom } from 'jotai';
 import { ExtendedPiece, Piece } from '../model';
 import { initialCells, initialTurn, winningCombinations } from './defaults';
 
+// primitive atoms
 const cellsDataAtom = atom<ExtendedPiece[]>(initialCells);
 const onTurnAtom = atom<Piece>(initialTurn);
 
+// read-only atom
 const messageAtom = atom((get) => {
     const winner = get(winnerAtom);
     const onTurn = get(onTurnAtom);
@@ -12,6 +14,7 @@ const messageAtom = atom((get) => {
     return winner ? `${winner} wins!` : `it is now ${onTurn}'s turn`;
 });
 
+// read-only atom
 const winnerAtom = atom<Piece | undefined>((get) => {
     const cells = get(cellsDataAtom);
 
@@ -32,6 +35,7 @@ const winnerAtom = atom<Piece | undefined>((get) => {
     }
 });
 
+// read-write atom
 const cellsAtom = atom(
     (get) => get(cellsDataAtom),
     (get, set, update: number) => {
