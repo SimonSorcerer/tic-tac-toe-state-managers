@@ -1,10 +1,8 @@
 import { useAtom, useAtomValue } from 'jotai';
-import { Piece } from '../model';
 import { state } from '../state/state.manager';
 import { Cell } from './Cell';
 
 export interface BoardProps {
-    go: Piece;
     onClick: () => void;
 }
 

@@ -1,6 +1,5 @@
-import { useAtom, useAtomValue, useSetAtom } from 'jotai';
+import { useAtom, useAtomValue } from 'jotai';
 import { Board } from './components/Board';
-import { Piece } from './model';
 import { state } from './state/state.manager';
 
 const App: React.FC = () => {
@@ -18,7 +17,7 @@ const App: React.FC = () => {
 
     return (
         <div className='app'>
-            <Board go={onTurn} onClick={handleClick} />
+            <Board onClick={handleClick} />
             <p>{message}</p>
         </div>
     );
