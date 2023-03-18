@@ -1,23 +1,13 @@
-import { useAtom, useAtomValue } from 'jotai';
+import { useAtomValue } from 'jotai';
 import { Board } from './components/Board';
 import { state } from './state/state.manager';
 
 const App: React.FC = () => {
-    const { messageAtom, onTurnAtom, winnerAtom } = state;
-    const [onTurn, setOnTurn] = useAtom(onTurnAtom);
-
-    const winner = useAtomValue(winnerAtom);
-    const message = useAtomValue(messageAtom);
-
-    const handleClick = () => {
-        if (!winner) {
-            setOnTurn(onTurn === 'circle' ? 'cross' : 'circle');
-        }
-    };
+    const message = useAtomValue(state.messageAtom);
 
     return (
         <div className='app'>
-            <Board onClick={handleClick} />
+            <Board />
             <p>{message}</p>
         </div>
     );

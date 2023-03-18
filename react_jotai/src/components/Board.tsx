@@ -2,11 +2,7 @@ import { useAtom, useAtomValue } from 'jotai';
 import { state } from '../state/state.manager';
 import { Cell } from './Cell';
 
-export interface BoardProps {
-    onClick: () => void;
-}
-
-export const Board: React.FC<BoardProps> = () => {
+export const Board: React.FC = () => {
     const { cellsAtom, winnerAtom } = state;
     const [cells, setCell] = useAtom(cellsAtom);
     const winner = useAtomValue(winnerAtom);
